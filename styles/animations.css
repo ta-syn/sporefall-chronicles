@@ -1,0 +1,658 @@
+/* Cyberpunk Animation Styles - Motion & Hover Effects
+
+Architecture:
+- Fast, precise animations for cyberpunk feel
+- Minimal loop animations for essential elements only
+- Sharp, mechanical transitions instead of smooth curves
+- Glitch and scanline effects for futuristic feel
+- Accessibility support for reduced motion
+
+Usage:
+- Apply enter animations once for initial reveal
+- Use subtle loops sparingly on small elements
+- Respect prefers-reduced-motion setting
+- Maintain performance with optimized transitions
+- Add fade-in, slide-in, and scroll-triggered animations
+- Implement neon glow pulse on hover
+*/
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fade-in, slide-in, and scroll-triggered animations - Fast, precise, subtle */
+.fade-in {
+  animation: fadeEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-up {
+  animation: slideEnterUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-down {
+  animation: slideEnterDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-left {
+  animation: slideEnterLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-right {
+  animation: slideEnterRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.scale-in {
+  animation: scaleEnter 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideEnterLeft {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideEnterRight {
+  from {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Scroll-triggered animations */
+.scroll-fade-in {
+  opacity: 0;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-slide-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.scroll-slide-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-slide-in-down {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.scroll-slide-in-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideEnterUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideEnterDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleEnter {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Exit animations - Faster, more precise */
+.fade-out {
+  animation: fadeExit 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-out-up {
+  animation: slideExitUp 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-out-down {
+  animation: slideExitDown 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.scale-out {
+  animation: scaleExit 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeExit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideExitUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideExitDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleExit {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* Cyberpunk-specific loop animations (use sparingly on small elements) */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+  animation: glitch-anim-main 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00ff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 #00ffff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-main {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* Subtle static effect */
+.static-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.static-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.05) 1px,
+      rgba(255, 255, 255, 0.05) 2px
+    );
+  animation: staticNoise 0.2s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes staticNoise {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-1px, 1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(-1px, -1px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(0); }
+  60% { transform: translate(-1px, 1px); }
+  70% { transform: translate(1px, -1px); }
+  80% { transform: translate(-1px, -1px); }
+  90% { transform: translate(1px, 1px); }
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(42px, 9999px, 44px, 0); }
+  5% { clip: rect(12px, 9999px, 59px, 0); }
+  10% { clip: rect(48px, 9999px, 29px, 0); }
+  15% { clip: rect(42px, 9999px, 73px, 0); }
+  20% { clip: rect(63px, 9999px, 27px, 0); }
+  25% { clip: rect(34px, 9999px, 55px, 0); }
+  30% { clip: rect(86px, 9999px, 73px, 0); }
+  35% { clip: rect(20px, 9999px, 20px, 0); }
+  40% { clip: rect(26px, 9999px, 60px, 0); }
+  45% { clip: rect(25px, 9999px, 66px, 0); }
+  50% { clip: rect(57px, 9999px, 98px, 0); }
+  55% { clip: rect(5px, 9999px, 46px, 0); }
+  60% { clip: rect(82px, 9999px, 31px, 0); }
+  65% { clip: rect(54px, 9999px, 27px, 0); }
+  70% { clip: rect(28px, 9999px, 99px, 0); }
+  75% { clip: rect(45px, 9999px, 69px, 0); }
+  80% { clip: rect(23px, 9999px, 85px, 0); }
+  85% { clip: rect(1px, 9999px, 83px, 0); }
+  90% { clip: rect(72px, 9999px, 11px, 0); }
+  95% { clip: rect(60px, 9999px, 89px, 0); }
+  100% { clip: rect(52px, 9999px, 74px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); }
+  5% { clip: rect(52px, 9999px, 74px, 0); }
+  10% { clip: rect(79px, 9999px, 85px, 0); }
+  15% { clip: rect(75px, 9999px, 5px, 0); }
+  20% { clip: rect(67px, 9999px, 61px, 0); }
+  25% { clip: rect(14px, 9999px, 79px, 0); }
+  30% { clip: rect(1px, 9999px, 66px, 0); }
+  35% { clip: rect(86px, 9999px, 30px, 0); }
+  40% { clip: rect(23px, 9999px, 98px, 0); }
+  45% { clip: rect(85px, 9999px, 72px, 0); }
+  50% { clip: rect(71px, 9999px, 75px, 0); }
+  55% { clip: rect(2px, 9999px, 48px, 0); }
+  60% { clip: rect(30px, 9999px, 16px, 0); }
+  65% { clip: rect(50px, 9999px, 42px, 0); }
+  70% { clip: rect(79px, 9999px, 32px, 0); }
+  75% { clip: rect(44px, 9999px, 35px, 0); }
+  80% { clip: rect(72px, 9999px, 8px, 0); }
+  85% { clip: rect(26px, 9999px, 74px, 0); }
+  90% { clip: rect(16px, 9999px, 69px, 0); }
+  95% { clip: rect(87px, 9999px, 67px, 0); }
+  100% { clip: rect(31px, 9999px, 27px, 0); }
+}
+
+.blink-subtle {
+  animation: blinkSubtle 2s ease-in-out infinite;
+}
+
+@keyframes blinkSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.scanline-effect {
+  position: relative;
+}
+
+.scanline-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 255, 255, 0.3);
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+/* Hover micro-interactions for buttons, icons, and cards - Fast and precise */
+.hover-glow {
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Neon glow pulse on hover - Cyberpunk style */
+.neon-pulse {
+  transition: all 0.2s ease;
+}
+
+.neon-pulse:hover {
+  animation: neonGlowPulse 0.5s ease-in-out;
+}
+
+@keyframes neonGlowPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+}
+
+/* Enhanced hover effects for cyberpunk UI */
+.hover-cyan-glow {
+  transition: all 0.15s ease;
+}
+
+.hover-cyan-glow:hover {
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+.hover-magenta-glow {
+  transition: all 0.15s ease;
+}
+
+.hover-magenta-glow:hover {
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+}
+
+.hover-green-glow {
+  transition: all 0.15s ease;
+}
+
+.hover-green-glow:hover {
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+/* Mechanical hover - no bounce, fast response */
+.mechanical-hover {
+  transition: all 0.1s ease;
+}
+
+.mechanical-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+/* Cyberpunk button hover effect */
+.btn-cyber-hover {
+  transition: all 0.1s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.btn-cyber-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+.btn-cyber-hover:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+/* Cyberpunk scanline animation */
+.scanline-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-pulse::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 255, 255, 0.5);
+  animation: scanlinePulse 3s linear infinite;
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+  z-index: 10;
+}
+
+@keyframes scanlinePulse {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  50% { opacity: 0.5; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Cyberpunk terminal typing effect */
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid var(--cyber-accent-cyan);
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--cyber-accent-cyan); }
+}
+
+.hover-neon {
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.hover-neon::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  transition: all 0.15s ease;
+  pointer-events: none;
+}
+
+.hover-neon:hover::before {
+  border-color: #00ffff;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+/* Transition utilities - More precise timing */
+.transition-fast {
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-normal {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-slow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance-optimized transitions */
+.transition-transform {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-opacity {
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-transform-opacity {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger animations */
+.stagger-child > * {
+  animation-delay: calc(0.05s * var(--delay-index));
+}
+
+/* Loading animations - Cyberpunk style */
+.loading-cyber-dots span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ffff;
+  margin: 0 2px;
+  animation: cyberLoadingDots 1.2s infinite both;
+}
+
+.loading-cyber-dots span:nth-child(2) {
+  animation-delay: 0.1s;
+  background: #ff00ff;
+}
+
+.loading-cyber-dots span:nth-child(3) {
+  animation-delay: 0.2s;
+  background: #00ff88;
+}
+
+@keyframes cyberLoadingDots {
+  0%, 60%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Element-specific animations */
+.element-reveal-up {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementRevealUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes elementRevealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cyberpunk pulse effect */
+.pulse-cyber {
+  animation: pulseCyber 2s ease-in-out infinite;
+}
+
+@keyframes pulseCyber {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(0, 255, 255, 0);
+  }
+}
+
+/* Sporefall Chronicles Logo Animation */
+.sporefall-logo {
+  position: relative;
+  color: #8B0000 !important; /* Dark Red */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: logoGlow 2s ease-in-out infinite alternate;
+}
+
+.sporefall-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.4), transparent);
+  animation: logoSlide 3s infinite;
+  z-index: 1;
+}
+
+.sporefall-logo:hover::before {
+  animation: logoSlide 1.5s infinite;
+}
+
+@keyframes logoGlow {
+  from {
+    text-shadow: 0 0 5px rgba(139, 0, 0, 0.5);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(139, 0, 0, 0.8), 0 0 30px rgba(139, 0, 0, 0.6);
+  }
+}
+
+@keyframes logoSlide {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

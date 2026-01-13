@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sporefall-chronicles.com/sitemap.xml

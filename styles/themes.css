@@ -1,0 +1,214 @@
+/* Theme Styles - Cyberpunk AAA-Game UI Design Tokens
+
+Architecture:
+- Base tokens in :root (dark theme defaults for cyberpunk)
+- Dark theme overrides in [data-theme="dark"] with neon accents
+- System preference support via @media (prefers-color-scheme)
+- Accessibility support for reduced motion and high contrast
+
+Usage:
+- Apply theme via data-theme attribute: <html data-theme="dark">
+- Neon colors for links, buttons, and interactive elements
+- Dark backgrounds globally with light text contrast
+- Standardized hover/active glow for all interactive elements
+*/
+
+/* Base Theme with Cyberpunk AAA-Game UI Defaults */
+:root {
+  /* Primary Colors - Cyberpunk Neon (used for highlights, hover, glow) */
+  --color-primary-50: #e6ffff;
+  --color-primary-100: #ccffff;
+  --color-primary-200: #99ffff;
+  --color-primary-300: #66ffff;
+  --color-primary-400: #33ffff;
+  --color-primary-500: #00ffff; /* Cyan - Main highlight */
+  --color-primary-600: #00e6e6;
+  --color-primary-700: #00b3b3;
+  --color-primary-800: #008080;
+  --color-primary-900: #004d4d;
+  
+  /* Secondary Colors - Cyberpunk Magenta (used for accents, active states) */
+  --color-secondary-50: #ffe6ff;
+  --color-secondary-100: #ffccff;
+  --color-secondary-200: #ff99ff;
+  --color-secondary-300: #ff66ff;
+  --color-secondary-400: #ff33ff;
+  --color-secondary-500: #ff00ff; /* Magenta - Secondary highlight */
+  --color-secondary-600: #e600e6;
+  --color-secondary-700: #b300b3;
+  --color-secondary-800: #800080;
+  --color-secondary-900: #4d004d;
+  
+  /* Tertiary Colors - Cyberpunk Green (used for success, confirmation) */
+  --color-tertiary-50: #e6ffec;
+  --color-tertiary-100: #ccffd8;
+  --color-tertiary-200: #99ffae;
+  --color-tertiary-300: #66ff85;
+  --color-tertiary-400: #33ff5b;
+  --color-tertiary-500: #00ff88; /* Green - Success/confirmation */
+  --color-tertiary-600: #00e67a;
+  --color-tertiary-700: #00b35f;
+  --color-tertiary-800: #008044;
+  --color-tertiary-900: #004d29;
+
+  /* Neutral Colors - Dark Cyberpunk */
+  --color-neutral-50: #0a0a0f;
+  --color-neutral-100: #111118;
+  --color-neutral-200: #1a1a25;
+  --color-neutral-300: #2a2a40;
+  --color-neutral-400: #3a3a5a;
+  --color-neutral-500: #4a4a7a;
+  --color-neutral-600: #5a5a9a;
+  --color-neutral-700: #6a6aa0;
+  --color-neutral-800: #7a7ab0;
+  --color-neutral-900: #8a8ac0;
+
+  /* Background Colors - Dark Theme for Cyberpunk */
+  --color-bg-primary: #0a0a0f;      /* Main background - near-black */
+  --color-bg-secondary: #111118;    /* Secondary sections - dark gray */
+  --color-bg-tertiary: #1a1a25;     /* Tertiary sections - slightly lighter dark */
+  --color-bg-card: #1a1a25;         /* Panel backgrounds - dark with subtle contrast */
+
+  /* Text Colors - Light text on dark background */
+  --color-text-primary: #e0e0ff;    /* Primary text - light blue-white */
+  --color-text-secondary: #a0a0c0;  /* Secondary text - muted blue-gray */
+  --color-text-tertiary: #8080a0;   /* Tertiary text - darker blue-gray */
+  --color-text-muted: #606080;      /* Muted text - darkest blue-gray */
+
+  /* Border Colors - Subtle borders for panels */
+  --color-border: #2a2a40;          /* Main border - dark blue-gray */
+  --color-border-light: #1a1a25;    /* Light border - same as bg-card */
+  --color-border-dark: #3a3a5a;     /* Dark border - darker blue-gray */
+
+  /* Shadow Colors - Cyberpunk Neon Glow for Interactive Elements */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 0 2px rgba(0, 255, 255, 0.1);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 255, 255, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 255, 255, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 255, 255, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 255, 255, 0.5);
+  
+  /* Glow Effects for Interactive Elements */
+  --glow-sm: 0 0 5px rgba(0, 255, 255, 0.3);
+  --glow-md: 0 0 10px rgba(0, 255, 255, 0.5);
+  --glow-lg: 0 0 15px rgba(0, 255, 255, 0.7);
+  --glow-xl: 0 0 20px rgba(0, 255, 255, 0.9);
+  --glow-cyan: 0 0 10px rgba(0, 255, 255, 0.5);
+  --glow-magenta: 0 0 10px rgba(255, 0, 255, 0.5);
+  --glow-green: 0 0 10px rgba(0, 255, 136, 0.5);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  /* Radius - Sharp Angles for Cyberpunk */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-full: 0px;
+
+  /* Typography - Monospace */
+  --font-family: 'Courier New', 'Courier', monospace, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+
+  /* Cyberpunk Brand Colors for Links, Buttons, Interactive Elements */
+  --color-sporefall-primary: #00ffff; /* Cyan - Main interactive color */
+  --color-sporefall-secondary: #ff00ff; /* Magenta - Secondary interactive color */
+  --color-sporefall-accent: #00ff88; /* Green - Success/confirmation color */
+  
+  /* Text Contrast Rules for Dark Background */
+  --text-contrast-normal: 4.5;
+  --text-contrast-enhanced: 7.0;
+  --text-color-link: var(--color-sporefall-primary);
+  --text-color-link-hover: var(--color-sporefall-secondary);
+  --text-color-button: var(--color-text-primary);
+  --text-color-button-hover: var(--color-bg-primary);
+  
+  /* Cyberpunk Gradients */
+  --gradient-cyber-primary: linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #00ff88 100%);
+  --gradient-cyber-secondary: linear-gradient(135deg, #ff00ff 0%, #00ffff 50%, #00ff88 100%);
+  --gradient-cyber-accent: linear-gradient(135deg, var(--color-sporefall-primary) 0%, var(--color-sporefall-secondary) 100%);
+}
+
+/* Dark Theme Override - Cyberpunk */
+[data-theme="dark"] {
+  /* Background Colors - Cyberpunk */
+  --color-bg-primary: #0a0a0f;      /* Darkest - main background */
+  --color-bg-secondary: #111118;    /* Medium - secondary sections */
+  --color-bg-tertiary: #1a1a25;     /* Lighter - tertiary sections */
+  --color-bg-card: #1a1a25;         /* Card backgrounds - distinct from secondary */
+
+  /* Text Colors */
+  --color-text-primary: #e0e0ff;
+  --color-text-secondary: #a0a0c0;
+  --color-text-tertiary: #8080a0;
+  --color-text-muted: #606080;
+
+  /* Border Colors */
+  --color-border: #2a2a40;
+  --color-border-light: #1a1a25;
+  --color-border-dark: #3a3a5a;
+}
+
+/* User Preference Support - Respects user choice over system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg-primary: #0a0a0f;
+    --color-bg-secondary: #111118;
+    --color-bg-tertiary: #1a1a25;
+    --color-bg-card: #1a1a25;
+    --color-text-primary: #e0e0ff;
+    --color-text-secondary: #a0a0c0;
+    --color-text-tertiary: #8080a0;
+    --color-text-muted: #606080;
+    --color-border: #2a2a40;
+  }
+}
+
+/* High Contrast Mode Support - Enhanced for better accessibility */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #dddddd;
+    --color-text-tertiary: #bbbbbb;
+    --color-text-muted: #999999;
+    --color-border: #ffffff;
+    --color-border-light: #dddddd;
+    --color-border-dark: #ffffff;
+  }
+  
+  [data-theme="dark"] {
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #dddddd;
+    --color-text-tertiary: #bbbbbb;
+    --color-text-muted: #999999;
+    --color-border: #ffffff;
+    --color-border-light: #dddddd;
+    --color-border-dark: #ffffff;
+  }
+}
+
+/* Reduced Motion Support - Maintained as correct implementation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

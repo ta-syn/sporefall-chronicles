@@ -1,0 +1,403 @@
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Theme and Component Styles */
+@import '../styles/themes.css';
+@import '../styles/component-styles.css';
+@import '../styles/animations.css';
+
+/* Global Layout & Background - Cyberpunk AAA-Game UI */
+:root {
+  /* Section padding, max-width, and margins */
+  --global-max-width: 1200px;
+  --global-section-padding: 4rem;
+  --global-content-padding: 2rem;
+  --global-margin-top: 3rem;
+  --global-margin-bottom: 3rem;
+}
+
+/* Cyberpunk Theme Variables */
+:root {
+  --cyber-bg: #0a0a0f;
+  --cyber-bg-secondary: #111118;
+  --cyber-bg-tertiary: #1a1a25;
+  --cyber-text-primary: #e0e0ff;
+  --cyber-text-secondary: #a0a0c0;
+  --cyber-text-accent: #00ffff;
+  --cyber-border: #2a2a40;
+  --cyber-glow: #00ffff;
+  --cyber-accent-cyan: #00ffff;
+  --cyber-accent-magenta: #ff00ff;
+  --cyber-accent-green: #00ff88;
+  --cyber-accent-purple: #9d4edd;
+}
+
+/* Cyberpunk Base Styles */
+:root {
+  --sporefall-foreground: var(--cyber-text-primary);
+  --sporefall-background: var(--cyber-bg);
+  --sporefall-primary: var(--cyber-accent-cyan);
+  --sporefall-primary-dark: var(--cyber-accent-magenta);
+  --sporefall-secondary: var(--cyber-accent-green);
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] {
+  --sporefall-foreground: var(--cyber-text-primary);
+  --sporefall-background: var(--cyber-bg);
+}
+
+/* Body Styles - Cyberpunk AAA-Game UI */
+body {
+  color: var(--sporefall-foreground);
+  background-color: var(--sporefall-background);
+  font-family: 'Courier New', 'Courier', monospace;
+  line-height: var(--body-line-height, var(--line-height-normal));
+  font-size: var(--font-size-base);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  background-image: 
+    radial-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(transparent 50%, rgba(0, 255, 255, 0.03) 50%),
+    linear-gradient(90deg, transparent 50%, rgba(0, 255, 255, 0.02) 50%);
+  background-size: 4px 4px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Cyberpunk scanlines overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(10, 10, 15, 0.1) 1px, transparent 1px);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(100%); }
+}
+
+/* CRT monitor effect */
+body {
+  background-image:
+    radial-gradient(circle at 50% 100%, rgba(0, 255, 255, 0.05) 0%, transparent 70%),
+    radial-gradient(circle at 100% 0%, rgba(255, 0, 255, 0.05) 0%, transparent 70%),
+    radial-gradient(circle at 0% 0%, rgba(0, 255, 136, 0.05) 0%, transparent 70%),
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 25px 25px;
+  background-blend-mode: screen, screen, screen, normal, normal;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base typography - Cyberpunk */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Courier New', 'Courier', monospace;
+  line-height: var(--line-height-tight);
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+h1 { 
+  font-size: 2.5rem; 
+  color: var(--cyber-text-accent);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+h2 { 
+  font-size: 2rem; 
+  color: var(--cyber-accent-cyan);
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+h3 { 
+  font-size: 1.5rem; 
+  color: var(--cyber-accent-green);
+}
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--cyber-text-secondary);
+}
+
+/* Link styles */
+a {
+  color: var(--cyber-accent-cyan);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--cyber-accent-cyan);
+  transition: width 0.3s ease;
+}
+
+a:hover {
+  color: var(--cyber-accent-magenta);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+  outline: 1px solid var(--cyber-accent-cyan);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--cyber-accent-cyan);
+  color: var(--cyber-bg);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cyber-bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyber-border);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-accent-cyan);
+}
+
+/* Section styles - Cyberpunk AAA-Game UI */
+section {
+  scroll-margin-top: 80px;
+  position: relative;
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  padding: var(--global-content-padding);
+  margin: var(--global-margin-top) auto var(--global-margin-bottom) auto;
+  max-width: var(--global-max-width);
+  background: var(--cyber-bg-secondary);
+  box-shadow: inset 0 0 0 1px var(--cyber-border);
+}
+
+/* Framed sections with thin borders - Cyberpunk style */
+.framed-section {
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  padding: var(--global-content-padding);
+  margin: var(--global-margin-top) auto var(--global-margin-bottom) auto;
+  max-width: var(--global-max-width);
+  background: var(--cyber-bg-secondary);
+  box-shadow: inset 0 0 0 1px var(--cyber-border);
+}
+
+/* Grid-based alignment - Cyberpunk style */
+.grid-container {
+  display: grid;
+  gap: var(--cyber-spacing-md, 1rem);
+  align-items: start;
+}
+
+/* Centered content - Cyberpunk style */
+.centered-content {
+  max-width: var(--global-max-width);
+  margin: 0 auto;
+  padding: 0 var(--global-content-padding);
+  width: 100%;
+}
+
+/* Explicit text centering for all headings and paragraphs */
+h1, h2, h3, h4, h5, h6 {
+  text-align: center !important;
+}
+
+p {
+  text-align: center !important;
+}
+
+/* Center container elements */
+.max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-3xl {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Ensure text centering in flex containers */
+.text-center {
+  text-align: center !important;
+}
+
+/* Force centering on content sections */
+section > div {
+  text-align: center !important;
+}
+
+/* Center buttons in all sections */
+section .btn, section .btn-primary, section .btn-outline, section .btn-secondary {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+/* Center link buttons in all sections */
+section a.btn, section a.btn-outline, section a.btn-secondary {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+/* Cyberpunk HUD panel sections */
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+}
+
+h1::after, h2::after, h3::after, h4::after, h5::after, h6::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyber-accent-cyan), transparent);
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Futuristic text styling */
+.futuristic-text {
+  font-family: 'Courier New', 'Courier', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+/* Sharp edge styling */
+.sharp-text {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cyber-text-primary);
+  text-shadow: 0 0 3px rgba(0, 255, 255, 0.2);
+}
+
+/* Cyberpunk terminal style */
+.terminal-text {
+  font-family: 'Courier New', 'Courier', monospace;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  font-size: 0.9rem;
+  color: var(--cyber-accent-cyan);
+  display: inline-block;
+}
+
+/* Glow effects for navbar and other components */
+.hover\:glow-cyan:hover {
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+.hover\:glow-magenta:hover {
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+}
+
+.hover\:glow-green:hover {
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+/* Responsive spacing for navbar */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 4rem; /* Increased gap for better spacing */
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+}
+
+/* Specific styles for navbar menu items */
+.nav-menu-item {
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+}
+

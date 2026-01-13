@@ -1,0 +1,906 @@
+/* Cyberpunk Button styles - System Activation Controls */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px;
+  font-weight: bold;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Courier New', 'Courier', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  backdrop-filter: blur(1px);
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+  /* System activation feel */
+  border-width: 1px;
+  border-style: solid;
+  background-clip: padding-box;
+  /* Add subtle inner glow */
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Allow overflow for buttons with tooltips */
+.btn.group {
+  overflow: visible;
+}
+
+/* Enhanced cyberpunk button with mechanical look */
+.btn-cyber {
+  background-color: transparent;
+  color: var(--cyber-accent-cyan);
+  border: 1px solid var(--cyber-accent-cyan);
+  padding: 0.6rem 1.5rem;
+  border-radius: 0px;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.1s ease;
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.btn-cyber:hover {
+  color: var(--cyber-bg);
+  background-color: var(--cyber-accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  transform: translateY(-1px);
+  border-color: var(--cyber-accent-cyan);
+}
+
+.btn-cyber:active {
+  transform: translateY(0);
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: var(--cyber-accent-cyan);
+  border-color: var(--cyber-accent-cyan);
+  padding: 0.5rem 1.5rem;
+  /* System activation effect */
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 255, 255, 0.1);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  color: var(--cyber-bg);
+  background-color: var(--cyber-accent-cyan);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  /* System activation feedback */
+  border-color: var(--cyber-accent-cyan);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+/* System activation pulse effect */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid var(--cyber-accent-cyan);
+  border-radius: 0px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::after {
+  opacity: 0.5;
+  box-shadow: 0 0 10px var(--cyber-accent-cyan);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--cyber-accent-magenta);
+  border: 1px solid var(--cyber-accent-magenta);
+  padding: 0.5rem 1.5rem;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 0, 255, 0.1);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.btn-outline:hover {
+  color: var(--cyber-bg);
+  background-color: var(--cyber-accent-magenta);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  /* System activation feedback */
+  border-color: var(--cyber-accent-magenta);
+}
+
+.btn-outline:hover::before {
+  opacity: 1;
+}
+
+/* System activation pulse effect */
+.btn-outline::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid var(--cyber-accent-magenta);
+  border-radius: 0px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+/* Consistent sizing for poll option buttons - more specific selector */
+button.poll-option-btn {
+  min-height: 4rem !important;
+  height: 4rem !important;
+  min-width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  box-sizing: border-box !important;
+}
+
+.poll-options-container button.poll-option-btn {
+  min-height: 4rem !important;
+  height: 4rem !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 1rem 1.5rem !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 640px) {
+  button.poll-option-btn {
+    min-height: 4.5rem !important;
+    height: 4.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Even more specific selector for poll options */
+div[class*="poll"] div button,
+div[class*="Poll"] div button {
+  height: 4rem !important;
+  min-height: 4rem !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 1rem 1.5rem !important;
+  box-sizing: border-box !important;
+}
+
+.btn-outline:hover::after {
+  opacity: 0.5;
+  box-shadow: 0 0 10px var(--cyber-accent-magenta);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--cyber-accent-green);
+  border: 1px solid var(--cyber-accent-green);
+  padding: 0.5rem 1.5rem;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 255, 136, 0.1);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.btn-secondary:hover {
+  color: var(--cyber-bg);
+  background-color: var(--cyber-accent-green);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  /* System activation feedback */
+  border-color: var(--cyber-accent-green);
+}
+
+.btn-secondary:hover::before {
+  opacity: 1;
+}
+
+/* System activation pulse effect */
+.btn-secondary::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid var(--cyber-accent-green);
+  border-radius: 0px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.btn-secondary:hover::after {
+  opacity: 0.5;
+  box-shadow: 0 0 10px var(--cyber-accent-green);
+}
+
+/* Input styles - Dark panel background, thin neon border, readable text */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  font-size: var(--font-size-base);
+  background-color: var(--cyber-bg-secondary);
+  color: var(--cyber-text-primary);
+  font-family: 'Courier New', 'Courier', monospace;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Enhanced cyberpunk input field */
+.input-cyber {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  font-size: var(--font-size-base);
+  background-color: var(--cyber-bg-secondary);
+  color: var(--cyber-text-primary);
+  font-family: 'Courier New', 'Courier', monospace;
+  transition: all 0.15s ease;
+  box-shadow: inset 0 0 0 1px var(--cyber-border);
+}
+
+.input-cyber:focus {
+  outline: none;
+  border-color: var(--cyber-accent-cyan);
+  box-shadow: inset 0 0 0 1px var(--cyber-accent-cyan), 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.input-cyber::placeholder {
+  color: var(--cyber-text-muted);
+  opacity: 0.6;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--cyber-accent-cyan);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 10, 15, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: var(--cyber-bg-secondary);
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--cyber-border);
+  position: relative;
+}
+
+/* Enhanced close button for modal */
+.modal-header button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.modal-header button:hover {
+  transform: rotate(90deg) scale(1.2);
+  color: var(--cyber-accent-cyan) !important;
+}
+
+.modal-header button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0px;
+  border: 1px solid var(--cyber-accent-magenta);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.modal-header button:hover::before {
+  border-color: var(--cyber-accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* Card styles - Sharp edges, thin neon border, dark background - Cyberpunk Panels */
+.card {
+  background: rgba(26, 26, 37, 0.8);
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1), inset 0 0 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+/* Enhanced cyberpunk panel with sharper styling */
+.panel-cyber {
+  background: var(--cyber-bg-panel);
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--cyber-border);
+  transition: all 0.2s ease;
+}
+
+.panel-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-cyan), transparent);
+  animation: scanline-panel 4s linear infinite;
+}
+
+.panel-cyber:hover {
+  border-color: var(--cyber-accent-cyan);
+  box-shadow: inset 0 0 0 1px var(--cyber-accent-cyan), 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+@keyframes scanline-panel {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-cyan), transparent);
+  animation: scanline-card 4s linear infinite;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-green), transparent);
+  animation: scanline-card 4s linear infinite reverse;
+}
+
+@keyframes scanline-card {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  border-color: var(--cyber-accent-cyan);
+}
+
+/* Container styles - Game Frame */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(42, 42, 64, 0.5);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Framed sections */
+.section-frame {
+  position: relative;
+  padding: 2rem;
+  margin: 2rem 0;
+  background: rgba(17, 17, 24, 0.6);
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  backdrop-filter: blur(3px);
+}
+
+.section-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-cyan), transparent);
+}
+
+.section-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-green), transparent);
+}
+
+/* Grid styles */
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .grid-cols-1-md {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .grid-cols-2-md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .grid-cols-3-md {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-cols-1-lg {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .grid-cols-2-lg {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .grid-cols-3-lg {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Footer styles */
+footer {
+  margin-top: auto;
+  background: var(--cyber-bg-secondary);
+  border-top: 1px solid var(--cyber-border);
+}
+
+/* Cyberpunk-specific styles */
+.system-ui {
+  background: var(--cyber-bg-tertiary);
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.system-ui::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-cyan), transparent);
+}
+
+.system-ui::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-green), transparent);
+}
+
+.glitch-text {
+  position: relative;
+  color: var(--cyber-accent-cyan);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--cyber-accent-magenta);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--cyber-accent-green);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(42px, 9999px, 44px, 0); }
+  5% { clip: rect(12px, 9999px, 59px, 0); }
+  10% { clip: rect(48px, 9999px, 29px, 0); }
+  15% { clip: rect(42px, 9999px, 73px, 0); }
+  20% { clip: rect(63px, 9999px, 27px, 0); }
+  25% { clip: rect(34px, 9999px, 55px, 0); }
+  30% { clip: rect(86px, 9999px, 73px, 0); }
+  35% { clip: rect(20px, 9999px, 20px, 0); }
+  40% { clip: rect(26px, 9999px, 60px, 0); }
+  45% { clip: rect(25px, 9999px, 66px, 0); }
+  50% { clip: rect(57px, 9999px, 98px, 0); }
+  55% { clip: rect(5px, 9999px, 46px, 0); }
+  60% { clip: rect(82px, 9999px, 31px, 0); }
+  65% { clip: rect(54px, 9999px, 27px, 0); }
+  70% { clip: rect(28px, 9999px, 99px, 0); }
+  75% { clip: rect(45px, 9999px, 69px, 0); }
+  80% { clip: rect(23px, 9999px, 85px, 0); }
+  85% { clip: rect(1px, 9999px, 83px, 0); }
+  90% { clip: rect(72px, 9999px, 11px, 0); }
+  95% { clip: rect(60px, 9999px, 89px, 0); }
+  100% { clip: rect(52px, 9999px, 74px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); }
+  5% { clip: rect(52px, 9999px, 74px, 0); }
+  10% { clip: rect(79px, 9999px, 85px, 0); }
+  15% { clip: rect(75px, 9999px, 5px, 0); }
+  20% { clip: rect(67px, 9999px, 61px, 0); }
+  25% { clip: rect(14px, 9999px, 79px, 0); }
+  30% { clip: rect(1px, 9999px, 66px, 0); }
+  35% { clip: rect(86px, 9999px, 30px, 0); }
+  40% { clip: rect(23px, 9999px, 98px, 0); }
+  45% { clip: rect(85px, 9999px, 72px, 0); }
+  50% { clip: rect(71px, 9999px, 75px, 0); }
+  55% { clip: rect(2px, 9999px, 48px, 0); }
+  60% { clip: rect(30px, 9999px, 16px, 0); }
+  65% { clip: rect(59px, 9999px, 50px, 0); }
+  70% { clip: rect(41px, 9999px, 62px, 0); }
+  75% { clip: rect(2px, 9999px, 82px, 0); }
+  80% { clip: rect(47px, 9999px, 73px, 0); }
+  85% { clip: rect(3px, 9999px, 27px, 0); }
+  90% { clip: rect(26px, 9999px, 55px, 0); }
+  95% { clip: rect(42px, 9999px, 97px, 0); }
+  100% { clip: rect(38px, 9999px, 49px, 0); }
+}
+
+.scanline {
+  position: relative;
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 255, 255, 0.3);
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid var(--cyber-accent-cyan);
+  border-radius: 0px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.neon-border:hover::before {
+  opacity: 1;
+  box-shadow: 0 0 10px var(--cyber-accent-cyan), 0 0 20px var(--cyber-accent-cyan);
+}
+
+.hud-panel {
+  background: rgba(10, 10, 15, 0.7);
+  border: 1px solid var(--cyber-border);
+  border-radius: 0px;
+  padding: 1.5rem;
+  position: relative;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.hud-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-cyan), transparent);
+  animation: scanline-hud 3s linear infinite;
+}
+
+.hud-panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-accent-green), transparent);
+  animation: scanline-hud 3s linear infinite reverse;
+}
+
+@keyframes scanline-hud {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cyber-accent-green);
+  box-shadow: 0 0 5px var(--cyber-accent-green);
+  margin-right: 0.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Social Media Icons Styles - Medium size, subtle neon glow on hover, aligned, not overpowering */
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  width: 26px;
+  height: 26px;
+  color: rgba(180, 255, 255, 0.7);
+  cursor: pointer;
+  transition: 
+    transform 0.15s ease,
+    color 0.15s ease,
+    filter 0.15s ease;
+  position: relative;
+  filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.3));
+}
+
+.social-icon:hover {
+  color: rgba(180, 255, 255, 1);
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.6));
+}
+
+.social-icon:active {
+  transform: scale(0.95);
+}
+
+/* Enhanced cyberpunk social icon container */
+.social-icon-container {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px;
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(42, 42, 64, 0.5);
+  transition: all 0.15s ease;
+}
+
+.social-icon-container:hover::before {
+  border-color: var(--cyber-accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Cyberpunk social icon wrapper */
+.cyber-social-icon {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.cyber-social-icon:hover {
+  color: var(--cyber-accent-cyan);
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.social-icon:hover .tooltip {
+  opacity: 1;
+}
+
+/* Ensure consistent styling for all social icons */
+.social-icon svg {
+  width: 28px !important;
+  height: 28px !important;
+  display: block;
+}
+
+/* Navbar logo specific styles to override sporefall-logo */
+nav .sporefall-logo {
+  font-size: 2rem !important; /* Base size for navbar */
+}
+
+@media (min-width: 768px) {
+  nav .sporefall-logo {
+    font-size: 2.5rem !important; /* Larger size on desktop */
+  }
+}
+
+@media (min-width: 1024px) {
+  nav .sporefall-logo {
+    font-size: 3rem !important; /* Even larger on larger screens */
+  }
+}
