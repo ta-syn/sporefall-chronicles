@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Sporefall Chronicles',
   description: 'A mysterious journey through the world of spores and chronicles',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/circular-favicon.svg',
   },
 };
 
